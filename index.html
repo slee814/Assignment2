@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title> Assignment 2 - Iris Lee </title>
+	</head>
+	
+	<style>
+		body{
+		background-image: url("http://cdn.wallpapersafari.com/44/30/7CbfG6.jpg");	
+		}
+		
+		#clear{
+			position:absolute; 
+			top:0; 
+			right:0;
+			margin: 10px;
+		}
+		
+		#header{
+			width:auto;
+			height: 100px;
+		}
+		
+		#bottom{
+			position: fixed;
+			width: 45%;
+			height: 100px;
+			bottom: 0px;
+			background-color: white;
+			margin-left: 10%;
+			font-size: 200%;
+			padding-left: 35%;
+			color: pink;
+			font-family: "Verdana";
+		}
+		
+		#main{
+			padding: 0 0 100px 0;
+		}
+		
+		.addSuccess{
+			width: 500px;
+			height: 200px;		
+			margin: 0 0 0 45%;
+			font-size: 200%;
+			background-color: red;
+		}
+		
+		.clearSuccess{
+			width: 500px;
+			height: 200px;		
+			margin: 0 0 0 45%;
+			font-size: 200%;
+			background-color: green;
+		}
+		
+		
+		.imageThumb{
+			position:absolute;
+			left:10px;
+			height: 100px;
+			width: 100px; 
+			float: left;
+		}
+		
+		.inputbox{
+			position: absolute;
+			left: 10%;
+			width: 60%;
+		}
+		
+		.textmessage{
+			float: right;
+		}
+		
+		.box{
+			margin: 0 200px 0 200px;
+		}
+		
+	</style>
+	
+	<body>
+	
+		<div id="header">
+		<button id='add'>Add</button>
+		<button id='clear'>Clear</button>
+		
+		<input type='text' placeholder='Subject' id='sub' class='inputbox' />
+		<br>
+		<input type='text' placeholder='Insert image URL link' id='imgurl' class='inputbox' />
+		<br>
+		<input type='text' placeholder='Your Message' id='text' class='inputbox' />
+
+		</div>
+		
+		<div id ="main">
+		</div>
+		
+		<div id ="bottom">
+		</div>
+		<script>
+			var addBut = document.getElementById("add");
+			var clearBut = document.getElementById("clear");
+			
+			var subInput = document.getElementById("sub")
+			var msgInput = document.getElementById("text");
+			var imgInput = document.getElementById("imgurl");
+			
+			var mainBody = document.getElementById("main");
+			var bottomPart = document.getElementById("bottom");
+			
+			addBut.onclick = function(){
+				var newObj = document.createElement("div");
+				mainBody.appendChild(newObj);
+				newObj.style.width = "80%"; 
+				newObj.style.height = "100px";
+				newObj.style.margin = "0 10% 0 10%";
+				newObj.style.backgroundColor = "#FED";
+				newObj.style.position = "relative"				
+					
+				var newImg = document.createElement("img");
+				newObj.appendChild(newImg); 
+				newImg.src = imgInput.value;
+				newImg.className ="imageThumb";
+				
+				var box = document.createElement("div");
+				newObj.appendChild(box);
+				box.className = "box";
+				
+				var heading3 = document.createElement("h3");
+				box.appendChild(heading3);
+				heading3.className = "h3";
+				heading3.innerHTML = subInput.value;
+				
+				var text = document.createElement("div");
+				box.appendChild(text);
+				text.className = "text";
+				text.innerHTML = msgInput.value;
+
+				var addSuccess = document.createElement("div");
+				bottomPart.appendChild(addSuccess);
+				addSuccess.className = "addSuccess";
+				bottomPart.innerHTML = "Created Item";
+			}
+			
+			clearBut.onclick = function(){
+				mainBody.innerHTML = "";
+							
+				var clearSuccess = document.createElement("div");
+				bottomPart.appendChild(clearSuccess);
+				clearSuccess.className = "clearSuccess";
+				bottomPart.innerHTML = "Cleared Items";
+			}
+			
+			
+		</script>
+	</body>
+</html>
